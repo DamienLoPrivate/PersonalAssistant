@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //PAGES AND COMPONENTS
 import Home from './pages/Home'
+import ToDoListPage from "./pages/ToDoList";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Home />}
+              element={<ToDoListPage />}
             />
           </Routes>
         </div>
