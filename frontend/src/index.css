@@ -1,13 +1,74 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+header .PageHeader {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: lightblue;
+}
+
+header .NavBar {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(9, 122, 243);
+}
+
+/* Task List Items CSS*/
+.TaskListItem {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.426);
+}
+
+.TaskListItem h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: black
+}
+
+.TaskListItem p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.TaskListItem span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+/* Create Task Page CSS*/
+.create {
+  background: #c6c6c6;
+  padding: 20px;
+  position: relative;
+
+}
+
+.subheader {
+  display: flex;
+  justify-content: space-between;
+  /* Align items on opposite ends */
+  align-items: center;
+  /* Vertically center the items */
 }

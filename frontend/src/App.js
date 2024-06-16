@@ -10,10 +10,8 @@ function App() {
       <BrowserRouter>
         <div className="Pages">
           <Routes>
-            <Route
-              path="/"
-              element={<ToDoListPage />}
-            />
+            <Route path="/" element={<Home />} />
+            <Route path="/ToDoList" element={<ToDoListPage />} />
           </Routes>
         </div>
       </BrowserRouter>
