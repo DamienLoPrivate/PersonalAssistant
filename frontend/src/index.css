@@ -1,5 +1,5 @@
 :root {
-  --primary: #1aac83;
+  --primary: #000000;
   --error: #e7195a;
 }
 
@@ -26,19 +26,23 @@ header .NavBar {
 
 /* Task List Items CSS*/
 .TaskListItem {
+  width: 100%;
+  height: 75px;
   background: #fff;
   border-radius: 4px;
-  margin: 20px auto;
-  padding: 20px;
+  padding: 5px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.426);
+  margin: 10px;
+  display: inline-flex;
+  align-items: center
 }
 
-.TaskListItem h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-  color: black
+.TaskListText {
+  width: 100%;
+  text-align: left;
 }
+
 
 .TaskListItem p {
   margin: 0;
@@ -57,18 +61,64 @@ header .NavBar {
   color: #333;
 }
 
-/* Create Task Page CSS*/
+.completedButton,
+.startStopButton {
+  margin: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+/* Create Task CSS*/
 .create {
   background: #c6c6c6;
-  padding: 20px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
   position: relative;
 
 }
 
 .subheader {
   display: flex;
-  justify-content: space-between;
-  /* Align items on opposite ends */
   align-items: center;
-  /* Vertically center the items */
+}
+
+.addButton {
+  margin: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.newTaskLabel {
+  width: 90%;
+  height: 25px;
+}
+
+.newTaskDetails {
+  display: flex;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.newDueDate {
+  padding-left: 10px;
+}
+
+.newDatesRequired {
+  padding-left: 50px;
+}
+
+.newDescription {
+  padding-left: 30px;
+}
+
+.newDescriptionLabel {
+  padding-right: 20px;
+}
+
+.newDescriptionInput {
+  width: 1230px;
 }

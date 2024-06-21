@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import NewTaskHeader from '../components/NewTaskHeader';
 import { useTasksContext } from '../Hooks/useTasksContext';
 
+
 const ToDoListPage = () => {
 
     const navigate = useNavigate()
@@ -55,7 +56,6 @@ const ToDoListPage = () => {
                 {tasks && tasks.map((task) => (
                     <TaskListItem key={task._id} task={task} />
                 ))}
-
             </div>
 
         </div>

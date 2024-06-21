@@ -21,14 +21,21 @@ const TaskListItem = ({ task }) => {
     }
 
     return (
-        <div className="TaskListItem">
-            <div className='subheader'>
-                <h4>{task.title}</h4>
-                <button onClick={deleteTask}>Delete</button>
+        <button className="TaskListItem" onClick={deleteTask}>
+            <button className='completedButton'></button>
+            <button className='startStopButton'></button>
+
+            <div className='TaskListText'>
+                <p>{task.title}</p>
+                <p> Date Created: {format(new Date(task.createdAt), 'dd/MM/yyyy')}   , Due Date: {format(new Date(task.dueDate), 'dd/MM/yyyy')}</p>
+                <p>Dates required: {task.datesRequired}</p>
             </div>
 
-            <p> Date Created: {format(new Date(task.createdAt), 'MM/dd/yyyy')}   , Due Date: { }</p>
-        </div>
+
+            <button className="deletetaskbutton" onClick={deleteTask}>Delete</button>
+        </button>
+
+
     )
 }
 

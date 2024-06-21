@@ -13,10 +13,21 @@ const taskSchema = new Schema({
         required: true
     },
 
-    duedate: {
+    dueDate: {
         type: Date,
         required: false
-    }
+    },
+
+    datesRequired: {
+        type: Number,
+        required: false
+    },
+
+    desccription: {
+        type: String,
+        required: false
+    },
+
 }, { timestamps: true })
 
 
