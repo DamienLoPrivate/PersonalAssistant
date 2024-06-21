@@ -61,6 +61,11 @@ header .NavBar {
   color: #333;
 }
 
+.TaskListText .TaskTitle {
+  font-size: 16px;
+  color: black;
+}
+
 .completedButton,
 .startStopButton {
   margin: 5px;
@@ -68,6 +73,21 @@ header .NavBar {
   width: 30px;
   border-radius: 50%;
 }
+
+.completedButton {
+  background-image: url('../src/graphics/checkmark_icon.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.startStopButton {
+  background-image: url('../src/graphics/pause_icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 
 /* Create Task CSS*/
 .create {
@@ -108,6 +128,10 @@ header .NavBar {
 }
 
 .newDatesRequired {
+  padding-left: 50px;
+}
+
+.newHoursREquired {
   padding-left: 50px;
 }
 

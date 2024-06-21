@@ -49,11 +49,11 @@ const getTask = async (req, res) => {
  */
 const createTask = async (req, res) => {
     //Define task content variables
-    const { title, dueDate, datesRequired, description } = req.body
+    const { title, dueDate, datesRequired, hoursRequired, description } = req.body
 
     //Create Task Object
     try {
-        const task = await Task.create({ title, dueDate, datesRequired, description })
+        const task = await Task.create({ title, dueDate, datesRequired, hoursRequired, description })
         res.status(200).json(task)
     } catch (error) {
         res.status(400).json({ error: error.message })

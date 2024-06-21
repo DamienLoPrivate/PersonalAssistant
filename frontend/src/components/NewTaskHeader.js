@@ -1,4 +1,4 @@
-import { format, addDays } from 'date-fns'
+import { format, addDays, setHours } from 'date-fns'
 import { useState } from 'react'
 import { useTasksContext } from '../Hooks/useTasksContext'
 
@@ -12,13 +12,14 @@ const NewTaskHeader = () => {
     const [title, setTitle] = useState('')
     const [dueDate, setDueDate] = useState(format(new Date(), 'yyyy-MM-dd'))
     const [datesRequired, setDatesRequired] = useState(0)
+    const [hoursRequired, setHoursRequired] = useState(0)
     const [description, setDescription] = useState('')
     const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const task = { title, dueDate, datesRequired, description }
+        const task = { title, dueDate, datesRequired, hoursRequired, description }
 
         //POST new tasks
         const response = await fetch('/api/tasks', {
@@ -40,7 +41,9 @@ const NewTaskHeader = () => {
             setTitle('')
             setDueDate(new Date())
             setDatesRequired(0)
+            setHoursRequired(0)
             setDescription('')
+
 
         }
     }
@@ -113,6 +116,15 @@ const NewTaskHeader = () => {
                         type='number'
                         onChange={(e) => handleDatesRequiredChange(e.target.value)}
                         value={datesRequired}
+                    />
+                </div>
+
+                <div className='newHoursREquired'>
+                    <label>Hours Required: </label>
+                    <input className=''
+                        type='number'
+                        onChange={(e) => setHoursRequired(e.target.value)}
+                        value={hoursRequired}
                     />
                 </div>
             </div>

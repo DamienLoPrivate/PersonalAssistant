@@ -23,6 +23,11 @@ const taskSchema = new Schema({
         required: false
     },
 
+    hoursRequired: {
+        type: Number,
+        required: false
+    },
+
     desccription: {
         type: String,
         required: false
