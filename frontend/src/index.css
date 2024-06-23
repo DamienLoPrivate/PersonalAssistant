@@ -3,6 +3,10 @@
   --error: #e7195a;
 }
 
+.functionalityTestButton {
+  background-color: red;
+  color: black;
+}
 
 header .PageHeader {
   max-width: 100%;

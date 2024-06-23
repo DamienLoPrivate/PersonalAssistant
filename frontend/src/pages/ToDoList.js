@@ -10,6 +10,10 @@ import { useTasksContext } from '../Hooks/useTasksContext';
 
 
 const ToDoListPage = () => {
+    //FUNCTIONALITY TEST BUTTON
+    const testFunc = () => {
+        alert()
+    }
 
     const navigate = useNavigate()
     //Local State Management
@@ -47,6 +51,7 @@ const ToDoListPage = () => {
             <header>
                 <div className="PageHeader">
                     <h1>To Do List</h1>
+                    <button className='functionalityTestButton' onClick={testFunc}>FUNTIONALITY TEST BUTTON ToDoListPage</button>
                 </div>
             </header>
 

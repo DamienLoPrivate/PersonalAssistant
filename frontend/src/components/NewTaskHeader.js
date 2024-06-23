@@ -87,7 +87,7 @@ const NewTaskHeader = () => {
         <form className='create' onSubmit={handleSubmit}>
 
 
-            <button onClick={() => testFunc()}>FUNCTIONAL TEST BUTTON</button>
+            <button className='functionalityTestButton' onClick={() => testFunc()}>FUNCTIONAL TEST BUTTON NewTaskHeader</button>
 
 
             <div className='subheader'>

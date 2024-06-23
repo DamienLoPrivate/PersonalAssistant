@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { goToHome, goToToDo, goToSettings } from './nav_methods'
 import { useEffect, useState } from "react";
+import { useSettingsContext } from "../Hooks/useSettingsContext";
 
 
 const SettingsPage = () => {
@@ -11,6 +12,7 @@ const SettingsPage = () => {
 
     const navigate = useNavigate()
 
+    const { dispatch } = useSettingsContext()
     const [username, setUsername] = useState('TEMP')
     const [workingHours, setWorkingHours] = useState(0)
     const [error, setError] = useState(null)
@@ -58,6 +60,7 @@ const SettingsPage = () => {
         }
         if (response.ok) {
             setError(null)
+            dispatch({ type: 'SET_SETTINGS', payload: json })
             console.log('Settings Updated', json)
 
         }
