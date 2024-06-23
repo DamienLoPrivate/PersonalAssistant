@@ -47,7 +47,7 @@ const initialiseSettings = async () => {
 
     //Initial Default Settings 
     username = "DEFAULT"
-    hoursAvaliable = 10
+    workingHours = 10
 
     //CREATE DEFAULT SETTINGS
     try {
@@ -55,7 +55,7 @@ const initialiseSettings = async () => {
 
         if (!existingSetting) {
             console.log("Settings Document does not exist, creating one");
-            const newSetting = new Settings({ _id: 'settings', username, hoursAvaliable });
+            const newSetting = new Settings({ _id: 'settings', username, workingHours });
             await newSetting.save();
             console.log('Settings document created');
         } else {

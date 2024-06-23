@@ -14,7 +14,7 @@ const settingsSchema = new Schema({
         required: true
     },
 
-    hoursAvaliable: {
+    workingHours: {
         type: Number,
         required: true
     }

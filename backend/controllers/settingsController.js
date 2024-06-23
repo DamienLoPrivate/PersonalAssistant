@@ -14,7 +14,7 @@ const mongoose = require('mongoose')
  */
 const createSettings = async (req, res) => {
     //Define Settings content variables
-    const { username, hoursAvaliable } = req.body
+    const { username, workingHours } = req.body
 
     //Check if Settings Already Exist, if so through return exisitng setting
     const exisitingSettings = Settings.findById({ _id: "settings" })
@@ -25,8 +25,8 @@ const createSettings = async (req, res) => {
 
     //Create Settings Object
     try {
-        const setting = await Settings.create({ username, hoursAvaliable })
-        res.status(200).json(username, hoursAvaliable)
+        const setting = await Settings.create({ username, workingHours })
+        res.status(200).json(username, workingHours)
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
@@ -57,10 +57,12 @@ const getSettings = async (req, res) => {
 const updateSettings = async (req, res) => {
 
     //Defining Settings Update Variables
-    const { username, hoursAvaliable } = req.body
-    const settings = await Task.findOneAndUpdate({ _id: "settings" },
-        { username: username },
-        { hoursAvaliable: hoursAvaliable },
+    const { username, workingHours } = req.body
+    const settings = await Settings.findOneAndUpdate({ _id: "settings" },
+        {
+            username: username,
+            workingHours: workingHours
+        },
         { new: true }    //Return new document to db
     )
 
