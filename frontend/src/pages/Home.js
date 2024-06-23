@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { goToToDo } from './nav_methods'
+import { goToToDo, goToSettings } from './nav_methods'
 
 const Home = () => {
 
@@ -15,6 +15,9 @@ const Home = () => {
                 <button onClick={() => goToToDo(navigate)}>ToDoPage</button>
             </div>
 
+            <div>
+                <button onClick={() => goToSettings(navigate)}>Settings</button>
+            </div>
 
         </div>
 

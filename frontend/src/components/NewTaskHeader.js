@@ -119,7 +119,7 @@ const NewTaskHeader = () => {
                     />
                 </div>
 
-                <div className='newHoursREquired'>
+                <div className='newHoursRequired'>
                     <label>Hours Required: </label>
                     <input className=''
                         type='number'

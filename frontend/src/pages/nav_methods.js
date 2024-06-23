@@ -8,9 +8,14 @@ const goToHome = (navigate) => {
     navigate('/')
 }
 
+const goToSettings = (navigate) => {
+    navigate('/settings')
+}
+
 
 
 export {
     goToToDo,
     goToHome,
+    goToSettings
 }
