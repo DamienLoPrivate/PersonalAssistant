@@ -5,6 +5,10 @@ const TaskListItem = ({ task }) => {
 
     const { dispatch } = useTasksContext()
 
+    const testFunc = () => {
+        alert(task.title)
+    }
+
     /** deleteTask
      * Deletes the task given by the button
      */
@@ -23,7 +27,7 @@ const TaskListItem = ({ task }) => {
     return (
         <button className="TaskListItem" onClick={deleteTask}>
             <button className='completedButton'></button>
-            <button className='startStopButton' ></button>
+            <button className='startStopButton'></button>
 
             <div className='TaskListText'>
                 <p className='TaskTitle'>{task.title}</p>

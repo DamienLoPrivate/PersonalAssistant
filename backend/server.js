@@ -65,5 +65,4 @@ const initialiseSettings = async () => {
         console.error('Error initializing settings:', error);
     }
 
-
 }

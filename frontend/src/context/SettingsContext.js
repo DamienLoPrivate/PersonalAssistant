@@ -1,6 +1,6 @@
 //CONTEXT AND REDUCER TO KEEP LOCAL STATE INSYNC WITH DATABASE
 
-import { createContext, useReducer } from "react"
+import { createContext, useEffect, useReducer } from "react"
 
 export const SettingsContext = createContext()
 
@@ -31,8 +31,28 @@ export const SettingsContextProvider = ({ children }) => {
 
     //SettingsContextProvider state definition
     const [state, dispatch] = useReducer(settingsReducer, {
-        settings: null
+        settings: { username: 'TEMP', workingHours: 0 }
     })
+
+    //Update Local State as soon as the SettingsContextProvider is loaded
+    useEffect(() => {
+        const fetchSettings = async () => {
+            try {
+                const response = await fetch('/api/settings');
+                const json = await response.json();
+
+                if (response.ok) {
+                    dispatch({ type: 'SET_SETTINGS', payload: json[0] });
+                } else {
+                    console.error('Failed to fetch settings:', json.error);
+                }
+            } catch (err) {
+                console.error('Failed to fetch settings:', err);
+            }
+        };
+
+        fetchSettings();
+    }, []);
 
 
     return (
