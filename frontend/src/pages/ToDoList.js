@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import NewTaskHeader from '../components/NewTaskHeader';
 import { useTasksContext } from '../Hooks/useTasksContext';
 import { useSettingsContext } from '../Hooks/useSettingsContext';
+import UncompletedTaskList from '../components/UncompletedTaskList';
 
 
 const ToDoListPage = () => {
@@ -60,11 +61,22 @@ const ToDoListPage = () => {
 
             <NewTaskHeader />
 
+            <div className='PageHeader'>
+                <h1>Uncompleted Tasks</h1>
+            </div>
+
+            <UncompletedTaskList tasks={tasks} />
+
+            <div className='PageHeader'>
+                <h1>Completed Tasks</h1>
+            </div>
+
             <div className="tasks">
                 {tasks && tasks.map((task) => (
                     <TaskListItem key={task._id} task={task} />
                 ))}
             </div>
+
 
         </div>
     );

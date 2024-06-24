@@ -6,7 +6,7 @@ const TaskListItem = ({ task }) => {
     const { dispatch } = useTasksContext()
 
     const testFunc = () => {
-        alert(task.title)
+        alert(task.completedStatus)
     }
 
     /** deleteTask
@@ -23,10 +23,45 @@ const TaskListItem = ({ task }) => {
         }
 
     }
+    /** updateTask
+     * Updates all input parameters
+     */
+    const updateTask = async (title, dueDate, datesRequired, hoursRequired, description, completedStatus) => {
+        const updatedTask = {
+            title: title,
+            dueDate: dueDate,
+            datesRequired: datesRequired,
+            hoursRequired: hoursRequired,
+            description: description,
+            completedStatus: completedStatus
+        }
+
+        //Call PATCH Request
+        const response = await fetch('/api/tasks/' + task._id, {
+            method: 'PATCH',
+            body: JSON.stringify(updatedTask),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+
+        })
+        //Update Local State
+        const json = await response.json()
+        if (response.ok) {
+            dispatch({ type: 'UPDATE_TASK', payload: json })
+        }
+    }
+
+    /** flipComplete
+     * Flips the completed State of a task object
+     */
+    const flipComplete = async () => {
+        updateTask(task.title, task.dueDate, task.datesRequired, task.hoursRequired, task.description, !task.completedStatus)
+    }
 
     return (
         <div className="TaskListItem">
-            <button className='completedButton'></button>
+            <button className='completedButton' onClick={flipComplete}></button>
             <button className='startStopButton' onClick={testFunc}></button>
 
             <button className='TaskListText' onClick={testFunc}>
@@ -36,7 +71,7 @@ const TaskListItem = ({ task }) => {
                     Hours Requierd: {task.hoursRequired}
 
                 </p>
-                <p>Dates required: {task.datesRequired}</p>
+                <p>Dates required: {task.datesRequired} Completed: {String(task.completedStatus)} </p>
             </button>
 
 

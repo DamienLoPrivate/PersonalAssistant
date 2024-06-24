@@ -28,10 +28,16 @@ const taskSchema = new Schema({
         required: false
     },
 
-    desccription: {
+    description: {
         type: String,
         required: false
     },
+
+    completedStatus: {
+        type: Boolean,
+        required: true
+    }
+
 
 }, { timestamps: true })
 
