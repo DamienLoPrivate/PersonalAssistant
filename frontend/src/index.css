@@ -43,8 +43,9 @@ header .NavBar {
 }
 
 .TaskListText {
-  width: 100%;
+  width: 95%;
   text-align: left;
+  height: 75px
 }
 
 
@@ -71,7 +72,8 @@ header .NavBar {
 }
 
 .completedButton,
-.startStopButton {
+.startStopButton,
+.deletetaskbutton {
   margin: 5px;
   height: 30px;
   width: 30px;
@@ -92,6 +94,12 @@ header .NavBar {
   background-position: center;
 }
 
+.deletetaskbutton {
+  background-image: url('../src/graphics/cross_icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 /* Create Task CSS*/
 .create {

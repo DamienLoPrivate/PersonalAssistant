@@ -66,6 +66,12 @@ const SettingsPage = () => {
         }
     }
 
+    //INPUT CHECKS
+    const setCheckedWorkingHours = (e) => {
+        if (e <= 24) { setWorkingHours(e) }
+        else { alert("Please select a number under 24") }
+    }
+
 
 
     return (
@@ -90,10 +96,10 @@ const SettingsPage = () => {
 
 
                 <div className='setWorkingHours'>
-                    <label>Hours Avaliable: </label>
+                    <label>Work Hours Avaliable: </label>
                     <input className=''
                         type='number'
-                        onChange={(e) => (setWorkingHours(Number(e.target.value)))}
+                        onChange={(e) => (setCheckedWorkingHours(Number(e.target.value)))}
                         value={workingHours}
                     />
                 </div>

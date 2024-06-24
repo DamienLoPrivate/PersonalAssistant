@@ -25,11 +25,11 @@ const TaskListItem = ({ task }) => {
     }
 
     return (
-        <button className="TaskListItem" onClick={deleteTask}>
+        <div className="TaskListItem">
             <button className='completedButton'></button>
-            <button className='startStopButton'></button>
+            <button className='startStopButton' onClick={testFunc}></button>
 
-            <div className='TaskListText'>
+            <button className='TaskListText' onClick={testFunc}>
                 <p className='TaskTitle'>{task.title}</p>
                 <p> Date Created: {format(new Date(task.createdAt), 'dd/MM/yyyy')},
                     Due Date: {format(new Date(task.dueDate), 'dd/MM/yyyy')},
@@ -37,11 +37,11 @@ const TaskListItem = ({ task }) => {
 
                 </p>
                 <p>Dates required: {task.datesRequired}</p>
-            </div>
+            </button>
 
 
-            <button className="deletetaskbutton" onClick={deleteTask}>Delete</button>
-        </button>
+            <button className="deletetaskbutton" onClick={deleteTask}></button>
+        </div>
 
 
     )
