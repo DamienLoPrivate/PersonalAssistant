@@ -13,6 +13,8 @@ export const settingsReducer = (state, action) => {
     switch (action.type) {
         //CASE: SET_SETTINGs action is previous state of SETTINGS
         case 'SET_SETTINGS':
+            console.log("Set Settings Called")
+            console.log(action.payload)
             return {
                 settings: action.payload
             }

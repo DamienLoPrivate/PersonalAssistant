@@ -7,17 +7,20 @@ import TaskListItem from '../components/TaskListItem';
 import { useEffect, useState } from 'react';
 import NewTaskHeader from '../components/NewTaskHeader';
 import { useTasksContext } from '../Hooks/useTasksContext';
+import { useSettingsContext } from '../Hooks/useSettingsContext';
 
 
 const ToDoListPage = () => {
     //FUNCTIONALITY TEST BUTTON
     const testFunc = () => {
-        alert()
+        alert(username + workingHours)
     }
 
     const navigate = useNavigate()
     //Local State Management
     const { tasks, dispatch } = useTasksContext()
+    const { settings } = useSettingsContext()
+    const { username, workingHours } = settings
 
     /** useEffect
      * Hook to fetch tasks when the Task List is rendered

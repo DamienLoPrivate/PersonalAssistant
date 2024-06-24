@@ -7,13 +7,13 @@ import { useSettingsContext } from "../Hooks/useSettingsContext";
 
 const SettingsPage = () => {
     const testFunc = () => {
-        alert(workingHours + 1)
+        alert(username)
     }
 
     const navigate = useNavigate()
 
     const { dispatch } = useSettingsContext()
-    const [username, setUsername] = useState('TEMP')
+    const [username, setUsername] = useState('DEFAULT')
     const [workingHours, setWorkingHours] = useState(0)
     const [error, setError] = useState(null)
 
