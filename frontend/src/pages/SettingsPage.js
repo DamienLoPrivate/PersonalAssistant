@@ -8,7 +8,7 @@ import { useMainClockContext } from "../Hooks/useMainClockContext";
 
 const SettingsPage = () => {
     const testFunc = () => {
-        alert(username)
+        alert(username + workingHours)
     }
 
     const navigate = useNavigate()

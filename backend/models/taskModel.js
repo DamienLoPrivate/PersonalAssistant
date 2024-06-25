@@ -33,8 +33,15 @@ const taskSchema = new Schema({
         required: false
     },
 
+    //Boolean whether the task is completed
     completedStatus: {
         type: Boolean,
+        required: true
+    },
+
+    //Time Elaspsed on the Task (in miliseconds)
+    timeElapsed: {
+        type: Number,
         required: true
     }
 

@@ -49,11 +49,11 @@ const getTask = async (req, res) => {
  */
 const createTask = async (req, res) => {
     //Define task content variables
-    const { title, dueDate, datesRequired, hoursRequired, description, completedStatus } = req.body
+    const { title, dueDate, datesRequired, hoursRequired, description, completedStatus, timeElapsed } = req.body
 
     //Create Task Object
     try {
-        const task = await Task.create({ title, dueDate, datesRequired, hoursRequired, description, completedStatus })
+        const task = await Task.create({ title, dueDate, datesRequired, hoursRequired, description, completedStatus, timeElapsed })
         res.status(200).json(task)
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -94,7 +94,7 @@ const updateTask = async (req, res) => {
     }
 
     //Defining Task Update Variables
-    const { title, dueDate, datesRequired, hoursRequired, description, completedStatus } = req.body
+    const { title, dueDate, datesRequired, hoursRequired, description, completedStatus, timeElapsed } = req.body
     const task = await Task.findOneAndUpdate({ _id: id },
         {
             title: title,
@@ -102,7 +102,8 @@ const updateTask = async (req, res) => {
             datesRequired: datesRequired,
             hoursRequired: hoursRequired,
             description: description,
-            completedStatus: completedStatus
+            completedStatus: completedStatus,
+            timeElapsed: timeElapsed
         },
         { new: true }    //Return new document to db
     )

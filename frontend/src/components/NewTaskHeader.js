@@ -15,12 +15,13 @@ const NewTaskHeader = () => {
     const [hoursRequired, setHoursRequired] = useState(0)
     const [description, setDescription] = useState('')
     const [completedStatus, setCompletedStatus] = useState(false)
+    const [timeElapsed, setTimeElapsed] = useState(0)
     const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const task = { title, dueDate, datesRequired, hoursRequired, description, completedStatus }
+        const task = { title, dueDate, datesRequired, hoursRequired, description, completedStatus, timeElapsed }
 
         //POST new tasks
         const response = await fetch('/api/tasks', {
@@ -44,7 +45,6 @@ const NewTaskHeader = () => {
             setDatesRequired(0)
             setHoursRequired(0)
             setDescription('')
-
 
         }
     }
