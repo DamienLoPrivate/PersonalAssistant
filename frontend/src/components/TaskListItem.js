@@ -138,7 +138,7 @@ const TaskListItem = ({ task }) => {
                 <p className='TaskTitle'>{task.title}</p>
                 <p> Date Created: {format(new Date(task.createdAt), 'dd/MM/yyyy')},
                     Due Date: {format(new Date(task.dueDate), 'dd/MM/yyyy')},
-                    Hours Requierd: {task.hoursRequired}
+                    Hours required: {task.hoursRequired}
 
                 </p>
                 <p>Dates required: {task.datesRequired},
