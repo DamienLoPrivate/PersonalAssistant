@@ -9,35 +9,32 @@ import React, { forwardRef, useEffect, useRef } from 'react';
  * @param className The classname of the button for CSS
  * @returns 
  */
-const ClickHoldButton = ({ clickFunc, holdFunc, holdDuration, className }) => {
+const ClickHoldButton = forwardRef(({ clickFunc, holdFunc, holdDuration, className }, ref) => {
     let holdTimeout = useRef(null);
     let isHeld = useRef(false);
-    let buttonRef = useRef(null);
-
 
     useEffect(() => {
-        const actionButton = buttonRef.current;
+        const actionButton = ref.current;
 
         const handleMouseDown = () => {
             holdTimeout.current = setTimeout(() => {
                 isHeld.current = true;
-                holdFunc()
+                holdFunc();
             }, holdDuration);
-
         };
 
-        //On Mouse Up
+        // On Mouse Up
         const handleMouseUp = () => {
             if (!isHeld.current) {
-                clickFunc()
+                clickFunc();
             }
-            //Reset Timeout and held status
-            clearTimeout(holdTimeout.current)
+            // Reset Timeout and held status
+            clearTimeout(holdTimeout.current);
             isHeld.current = false;
         };
 
         const handleMouseLeave = () => {
-            clearTimeout(holdTimeout);
+            clearTimeout(holdTimeout.current);
             isHeld.current = false;
         };
 
@@ -51,11 +48,11 @@ const ClickHoldButton = ({ clickFunc, holdFunc, holdDuration, className }) => {
             actionButton.removeEventListener('mouseup', handleMouseUp);
             actionButton.removeEventListener('mouseleave', handleMouseLeave);
         };
-    }, [clickFunc, holdFunc, holdDuration]);
+    }, [clickFunc, holdFunc, holdDuration, ref]);
 
     return (
-        <button ref={buttonRef} className={className}></button>
+        <button ref={ref} className={className}></button>
     );
-};
+});
 
 export default ClickHoldButton;

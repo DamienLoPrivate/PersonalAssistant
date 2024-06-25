@@ -91,29 +91,36 @@ header .NavBar {
   border-radius: 50%;
 }
 
+
 .completedButton {
-  background-image: url('../src/graphics/checkmark_icon.svg');
+  background-image: url('../public/graphics/checkmark_icon.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .startStopButtonPlay {
-  background-image: url('../src/graphics/play_icon.png');
+  background-image: url('../public/graphics/play_icon.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .startStopButtonPause {
-  background-image: url('../src/graphics/pause_icon.png');
+  background-image: url('../public/graphics/pause_icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.startStopButton {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .deletetaskbutton {
-  background-image: url('../src/graphics/cross_icon.png');
+  background-image: url('../public/graphics/cross_icon.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

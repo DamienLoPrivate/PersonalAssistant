@@ -1,7 +1,7 @@
 import TaskListItem from "./TaskListItem"
 
 const CompletedTaskList = ({ tasks }) => {
-    const completedTasks = tasks ? tasks.filter(task => task.completedStatus).sort((a, b) => a.title.localeCompare(b.title)) : [];
+    const completedTasks = tasks ? tasks.filter(task => task.completedStatus).sort((b, a) => a.title.localeCompare(b.title)) : [];
 
     return (
         <div className="completedTasks">

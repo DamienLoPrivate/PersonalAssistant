@@ -120,19 +120,19 @@ const TaskListItem = ({ task }) => {
         return () => clearInterval(intervalRef.current); // Cleanup interval on component unmount
     }, []);
 
-    // useEffect(() => {
-    //     if (counting) {
-    //         document.getElementById("startStopButton").style.backgroundImage = "url('../src/graphics/pause_icon.png')"
+    useEffect(() => {
+        if (counting) {
+            startStopButtonRef.current.className = "startStopButtonPause"
 
-    //     } else {
-    //         document.getElementById("startStopButton").style.backgroundImage = "url('../src/graphics/play_icon.png')"
-    //     }
-    // }, [counting]);
+        } else {
+            startStopButtonRef.current.className = "startStopButtonPlay"
+        }
+    }, [counting]);
 
     return (
         <div className="TaskListItem">
             <button className='completedButton' onClick={flipComplete}></button>
-            <ClickHoldButton id="startStopButton" clickFunc={startStopTaskStopWatch} holdFunc={resetTimeElapsed} holdDuration={500} className={'startStopButtonPlay'}></ClickHoldButton>
+            <ClickHoldButton ref={startStopButtonRef} clickFunc={startStopTaskStopWatch} holdFunc={resetTimeElapsed} holdDuration={500} className={'startStopButton'}></ClickHoldButton>
 
             <button className='TaskListText' onClick={testFunc}>
                 <p className='TaskTitle'>{task.title}</p>
