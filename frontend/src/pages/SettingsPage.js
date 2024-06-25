@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/generalComponents/NavBar";
 import { goToHome, goToToDo, goToSettings } from './nav_methods'
 import { useEffect, useState } from "react";
 import { useSettingsContext } from "../Hooks/useSettingsContext";
+import { useMainClockContext } from "../Hooks/useMainClockContext";
 
 
 const SettingsPage = () => {
@@ -11,6 +12,7 @@ const SettingsPage = () => {
     }
 
     const navigate = useNavigate()
+    const { fullDateTime, currentTime, currentDate } = useMainClockContext()    //Main Clock Components
 
     const { dispatch } = useSettingsContext()
     const [username, setUsername] = useState('DEFAULT')
@@ -80,6 +82,9 @@ const SettingsPage = () => {
             <NavBar goFunc={goToHome} navigate={navigate} />
 
             <h1>SETTINGS</h1>
+            <div className="MainClock">
+                <h2>Main Clock:  </h2> <h2>{String(fullDateTime)}</h2>
+            </div>
 
             <button onClick={() => testFunc()}>FUNCTIONAL TEST BUTTON</button>
 

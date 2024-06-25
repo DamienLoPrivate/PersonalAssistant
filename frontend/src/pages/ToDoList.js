@@ -2,13 +2,15 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { goToHome, goToToDo, goToNewTask } from './nav_methods'
 import PageHeader from '../components/PageHeader'
-import NavBar from '../components/NavBar';
+import NavBar from '../components/generalComponents/NavBar';
 import TaskListItem from '../components/TaskListItem';
 import { useEffect, useState } from 'react';
 import NewTaskHeader from '../components/NewTaskHeader';
 import { useTasksContext } from '../Hooks/useTasksContext';
 import { useSettingsContext } from '../Hooks/useSettingsContext';
 import UncompletedTaskList from '../components/UncompletedTaskList';
+import CompletedTaskList from '../components/CompletedTaskList';
+import { useMainClockContext } from '../Hooks/useMainClockContext';
 
 
 const ToDoListPage = () => {
@@ -18,6 +20,8 @@ const ToDoListPage = () => {
     }
 
     const navigate = useNavigate()
+    const { fullDateTime, currentTime, currentDate } = useMainClockContext()    //Main Clock Components
+
     //Local State Management
     const { tasks, dispatch } = useTasksContext()
     const { settings } = useSettingsContext()
@@ -71,11 +75,7 @@ const ToDoListPage = () => {
                 <h1>Completed Tasks</h1>
             </div>
 
-            <div className="tasks">
-                {tasks && tasks.map((task) => (
-                    <TaskListItem key={task._id} task={task} />
-                ))}
-            </div>
+            <CompletedTaskList tasks={tasks} />
 
 
         </div>

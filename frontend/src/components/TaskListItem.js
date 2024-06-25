@@ -1,12 +1,16 @@
 import format from 'date-fns/format'
 import { useTasksContext } from '../Hooks/useTasksContext'
+import { useMainClockContext } from '../Hooks/useMainClockContext';
+import { differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds, parse } from 'date-fns';
+
 
 const TaskListItem = ({ task }) => {
 
     const { dispatch } = useTasksContext()
+    let { fullDateTime, currentTime, currentDate } = useMainClockContext()  //Main Clock Components
 
     const testFunc = () => {
-        alert(task.completedStatus)
+        alert(currentDate)
     }
 
     /** deleteTask
@@ -59,6 +63,13 @@ const TaskListItem = ({ task }) => {
         updateTask(task.title, task.dueDate, task.datesRequired, task.hoursRequired, task.description, !task.completedStatus)
     }
 
+    /** datesRemain
+     * 
+     */
+    const datesRemain = () => {
+        return differenceInDays(new Date(task.dueDate), new Date())
+    }
+
     return (
         <div className="TaskListItem">
             <button className='completedButton' onClick={flipComplete}></button>
@@ -71,7 +82,10 @@ const TaskListItem = ({ task }) => {
                     Hours Requierd: {task.hoursRequired}
 
                 </p>
-                <p>Dates required: {task.datesRequired} Completed: {String(task.completedStatus)} </p>
+                <p>Dates required: {task.datesRequired},
+                    Completed: {String(task.completedStatus)},
+                    Dates Remaining: {datesRemain()}
+                </p>
             </button>
 
 

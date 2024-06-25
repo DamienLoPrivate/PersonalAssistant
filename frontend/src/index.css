@@ -28,6 +28,12 @@ header .NavBar {
   background-color: rgb(9, 122, 243);
 }
 
+.MainClock {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 /* Task List Items CSS*/
 .TaskListItem {
   width: 100%;
@@ -45,7 +51,11 @@ header .NavBar {
 .TaskListText {
   width: 95%;
   text-align: left;
-  height: 75px
+  height: 75px;
+}
+
+.completedTasks .TaskListItem .TaskListText {
+  text-decoration: line-through;
 }
 
 

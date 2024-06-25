@@ -5,7 +5,7 @@ const UncompletedTaskList = ({ tasks }) => {
 
     return (
         <div className="tasks">
-            {tasks && tasks.map((task) => (
+            {uncompletedTasks && uncompletedTasks.map((task) => (
                 <TaskListItem key={task._id} task={task} />
             ))}
         </div>
