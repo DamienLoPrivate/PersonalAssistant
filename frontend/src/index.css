@@ -1,13 +1,178 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --primary: #000000;
+  --error: #e7195a;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.functionalityTestButton {
+  background-color: red;
+  color: black;
+}
+
+header .PageHeader {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: lightblue;
+}
+
+header .NavBar {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(9, 122, 243);
+}
+
+.MainClock {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* Task List Items CSS*/
+.TaskListItem {
+  width: 100%;
+  height: 75px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.426);
+  margin: 10px;
+  display: inline-flex;
+  align-items: center
+}
+
+.TaskListText {
+  width: 95%;
+  text-align: left;
+  height: 75px;
+}
+
+.completedTasks .TaskListItem .TaskListText {
+  text-decoration: line-through;
+}
+
+
+.TaskListItem p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.TaskListItem span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+.TaskListText .TaskTitle {
+  font-size: 16px;
+  color: black;
+}
+
+.completedButton,
+.startStopButtonPlay,
+.startStopButtonPause,
+.deletetaskbutton {
+  margin: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.completedButton {
+  background-image: url('../src/graphics/checkmark_icon.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.startStopButtonPlay {
+  background-image: url('../src/graphics/play_icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.startStopButtonPause {
+  background-image: url('../src/graphics/pause_icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.deletetaskbutton {
+  background-image: url('../src/graphics/cross_icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Create Task CSS*/
+.create {
+  background: #c6c6c6;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  position: relative;
+
+}
+
+.subheader {
+  display: flex;
+  align-items: center;
+}
+
+.addButton {
+  margin: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.newTaskLabel {
+  width: 90%;
+  height: 25px;
+}
+
+.newTaskDetails {
+  display: flex;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.newDueDate {
+  padding-left: 10px;
+}
+
+.newDatesRequired {
+  padding-left: 50px;
+}
+
+.newHoursREquired {
+  padding-left: 50px;
+}
+
+.newDescription {
+  padding-left: 30px;
+}
+
+.newDescriptionLabel {
+  padding-right: 20px;
+}
+
+.newDescriptionInput {
+  width: 1230px;
 }
