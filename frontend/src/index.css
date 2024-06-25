@@ -82,7 +82,8 @@ header .NavBar {
 }
 
 .completedButton,
-.startStopButton,
+.startStopButtonPlay,
+.startStopButtonPause,
 .deletetaskbutton {
   margin: 5px;
   height: 30px;
@@ -97,7 +98,14 @@ header .NavBar {
   background-position: center;
 }
 
-.startStopButton {
+.startStopButtonPlay {
+  background-image: url('../src/graphics/play_icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.startStopButtonPause {
   background-image: url('../src/graphics/pause_icon.png');
   background-size: cover;
   background-repeat: no-repeat;

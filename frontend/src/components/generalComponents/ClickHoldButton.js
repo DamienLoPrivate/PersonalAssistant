@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 
 /** ClickHoldButton
  * A button that can run separate functions based on click and hold
@@ -10,9 +10,10 @@ import React, { useEffect, useRef } from 'react';
  * @returns 
  */
 const ClickHoldButton = ({ clickFunc, holdFunc, holdDuration, className }) => {
-    const buttonRef = useRef(null);
     let holdTimeout = useRef(null);
     let isHeld = useRef(false);
+    let buttonRef = useRef(null);
+
 
     useEffect(() => {
         const actionButton = buttonRef.current;

@@ -14,9 +14,10 @@ const TaskListItem = ({ task }) => {
     const intervalRef = useRef(null);
     const [startTime, setStartTime] = useState(new Date())
     const [counting, setCounting] = useState(false)
+    const startStopButtonRef = useRef(null);
 
     const testFunc = () => {
-        alert()
+        alert("Changed")
     }
 
     /** deleteTask
@@ -88,6 +89,7 @@ const TaskListItem = ({ task }) => {
                 setDisplayTimeElaspsed(displayTimeElapsed += 1); // Increment by 1 every 60000 miliseconds
             }, 60000);
             setCounting(true)
+
         } else {
             //Take the difference in start and end time, add to original time elapsed
             console.log("Calculating Difference in Time between: ", new Date(), " and ", startTime)
@@ -118,10 +120,19 @@ const TaskListItem = ({ task }) => {
         return () => clearInterval(intervalRef.current); // Cleanup interval on component unmount
     }, []);
 
+    // useEffect(() => {
+    //     if (counting) {
+    //         document.getElementById("startStopButton").style.backgroundImage = "url('../src/graphics/pause_icon.png')"
+
+    //     } else {
+    //         document.getElementById("startStopButton").style.backgroundImage = "url('../src/graphics/play_icon.png')"
+    //     }
+    // }, [counting]);
+
     return (
         <div className="TaskListItem">
             <button className='completedButton' onClick={flipComplete}></button>
-            <ClickHoldButton clickFunc={startStopTaskStopWatch} holdFunc={resetTimeElapsed} holdDuration={500} className={'startStopButton'}></ClickHoldButton>
+            <ClickHoldButton id="startStopButton" clickFunc={startStopTaskStopWatch} holdFunc={resetTimeElapsed} holdDuration={500} className={'startStopButtonPlay'}></ClickHoldButton>
 
             <button className='TaskListText' onClick={testFunc}>
                 <p className='TaskTitle'>{task.title}</p>
