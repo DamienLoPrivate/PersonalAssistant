@@ -52,6 +52,7 @@ export const MainClockContextProvider = ({ children }) => {
         return `${hours}:${minutes}:${seconds}.${milliseconds}`;
     };
 
+
     return (
         <MainClockContext.Provider value={{ fullDateTime, currentTime, currentDate, stopWatchTime, startStopwatch, stopStopwatch, resetStopwatch, stopWatchRunning }}>
             {children}

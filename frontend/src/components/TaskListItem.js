@@ -2,7 +2,7 @@ import format from 'date-fns/format'
 import { useTasksContext } from '../Hooks/useTasksContext'
 import { useMainClockContext } from '../Hooks/useMainClockContext';
 import { differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds, parse, addDays } from 'date-fns';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ClickHoldButton from './generalComponents/ClickHoldButton';
 
 
@@ -10,13 +10,13 @@ const TaskListItem = ({ task }) => {
 
     const { dispatch } = useTasksContext()
     let { fullDateTime, currentTime, currentDate, stopWatchTime, startStopwatch, stopStopwatch, resetStopwatch, stopWatchRunning } = useMainClockContext()  //Main Clock Components
+    let [displayTimeElapsed, setDisplayTimeElaspsed] = useState(Math.ceil(task.timeElapsed / 60))
+    const intervalRef = useRef(null);
+    const [startTime, setStartTime] = useState(new Date())
+    const [counting, setCounting] = useState(false)
 
-    const holdFunc = () => {
-        alert("Button Held")
-    }
-
-    const clickFunc = () => {
-        alert("Button Clicked")
+    const testFunc = () => {
+        alert()
     }
 
     /** deleteTask
@@ -77,32 +77,53 @@ const TaskListItem = ({ task }) => {
         return differenceInDays(new Date(task.dueDate), currentDate)
     }
 
-    /** runStopWatch
-     * Runs the tasks's stopwatch to count duration of use
-     */
-    const stopStartStopWatch = async () => {
-        if (!stopWatchRunning) {
-            console.log('Stop watch started, no time added yet')
-            resetStopwatch()
-            startStopwatch()
-
+    const startStopTaskStopWatch = async () => {
+        //If Start Counting
+        if (!counting) {
+            //Reset / Set start time to current time of begining time count
+            setStartTime(new Date())
+            console.log("Starting count at start time: ", startTime)
+            //Update Display every minute
+            intervalRef.current = setInterval(() => {
+                setDisplayTimeElaspsed(displayTimeElapsed += 1); // Increment by 1 every 60000 miliseconds
+            }, 60000);
+            setCounting(true)
         } else {
-            stopStopwatch()
-            task.timeElapsed += stopWatchTime
-            updateTask(task.title, task.dueDate, task.datesRequired, task.hoursRequired, task.description, task.completedStatus, task.timeElapsed)
-            console.log('Stop watch stopped, time added')
+            //Take the difference in start and end time, add to original time elapsed
+            console.log("Calculating Difference in Time between: ", new Date(), " and ", startTime)
+            const newTimeElasped = differenceInSeconds(new Date(), startTime) + task.timeElapsed
+            updateTask(task.title, task.dueDate, task.datesRequired, task.hoursRequired, task.description, task.completedStatus, newTimeElasped)
+
+            //Stop Display
+            clearInterval(intervalRef.current);
+
+            //Match the Display to the task.timeElapses in Minutes
+            setDisplayTimeElaspsed(Math.ceil(newTimeElasped / 60))
+            setCounting(false)
         }
+
     }
+
+
+    /** resetTimeElapsed
+     * Resets both the task.timeElapsed value and displayTimeElapsed Value to 0
+     */
     const resetTimeElapsed = async () => {
         updateTask(task.title, task.dueDate, task.datesRequired, task.hoursRequired, task.description, task.completedStatus, 0)
+        setDisplayTimeElaspsed(0)
     }
+
+    // Update localTimeElapsed every minute
+    useEffect(() => {
+        return () => clearInterval(intervalRef.current); // Cleanup interval on component unmount
+    }, []);
 
     return (
         <div className="TaskListItem">
             <button className='completedButton' onClick={flipComplete}></button>
-            <ClickHoldButton clickFunc={stopStartStopWatch} holdFunc={resetTimeElapsed} holdDuration={1000} className={'startStopButton'}></ClickHoldButton>
+            <ClickHoldButton clickFunc={startStopTaskStopWatch} holdFunc={resetTimeElapsed} holdDuration={500} className={'startStopButton'}></ClickHoldButton>
 
-            <button className='TaskListText' onClick={clickFunc}>
+            <button className='TaskListText' onClick={testFunc}>
                 <p className='TaskTitle'>{task.title}</p>
                 <p> Date Created: {format(new Date(task.createdAt), 'dd/MM/yyyy')},
                     Due Date: {format(new Date(task.dueDate), 'dd/MM/yyyy')},
@@ -114,7 +135,7 @@ const TaskListItem = ({ task }) => {
                     Dates Remaining: {datesRemain()}
                 </p>
                 <p>
-                    Time Elapsed: {Math.ceil(task.timeElapsed)} minutes
+                    Time Elapsed: {Math.ceil(displayTimeElapsed)} minutes
                 </p>
             </button>
 

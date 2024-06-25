@@ -39,7 +39,7 @@ const taskSchema = new Schema({
         required: true
     },
 
-    //Time Elaspsed on the Task (in miliseconds)
+    //Time Elaspsed on the Task (in seconds)
     timeElapsed: {
         type: Number,
         required: true
