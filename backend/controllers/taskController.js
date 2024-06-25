@@ -94,7 +94,7 @@ const updateTask = async (req, res) => {
     }
 
     //Defining Task Update Variables
-    const { title, dueDate, datesRequired, hoursRequired, description, completedStatus, timeElapsed } = req.body
+    const { title, dueDate, datesRequired, hoursRequired, description, completedStatus, timeElapsed, lastStarted, timingOn } = req.body
     const task = await Task.findOneAndUpdate({ _id: id },
         {
             title: title,
@@ -103,7 +103,9 @@ const updateTask = async (req, res) => {
             hoursRequired: hoursRequired,
             description: description,
             completedStatus: completedStatus,
-            timeElapsed: timeElapsed
+            timeElapsed: timeElapsed,
+            lastStarted: lastStarted,
+            timingOn: timingOn
         },
         { new: true }    //Return new document to db
     )
